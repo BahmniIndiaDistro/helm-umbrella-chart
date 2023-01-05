@@ -160,12 +160,12 @@ jobs:
           --set bahmni-metabase.secrets.MB_ADMIN_EMAIL=$MB_ADMIN_EMAIL \
           --set bahmni-metabase.secrets.MB_ADMIN_PASSWORD=$MB_ADMIN_PASSWORD \
           --set bahmni-metabase.secrets.OPENMRS_DB_HOST=$RDS_HOST \
-          --set bahmni-metabase.secrets.OPENMRS_DB_USERNAME=$OPENMRS_DB_USERNAME \
-          --set bahmni-metabase.secrets.OPENMRS_DB_PASSWORD=$OPENMRS_DB_PASSWORD \
+          --set bahmni-metabase.secrets.OPENMRS_DB_USERNAME=$OPENMRS_READ_ONLY_DB_USERNAME \
+          --set bahmni-metabase.secrets.OPENMRS_DB_PASSWORD=$OPENMRS_DB_READ_ONLY_PASSWORD \
           --set bahmni-metabase.secrets.MB_DB_USER=$MB_DB_USER \
           --set bahmni-metabase.secrets.MB_DB_PASS=$MB_DB_PASS \
-          --set bahmni-metabase.secrets.MART_DB_USERNAME=$MART_DB_USERNAME \
-          --set bahmni-metabase.secrets.MART_DB_PASSWORD=$MART_DB_PASSWORD \
+          --set bahmni-metabase.secrets.MART_DB_USERNAME=$MART_DB_READ_ONLY_USERNAME \
+          --set bahmni-metabase.secrets.MART_DB_PASSWORD=$MART_DB_READ_ONLY_PASSWORD \
           --set bahmni-mart.secrets.OPENMRS_DB_HOST=$RDS_HOST \
           --set bahmni-mart.secrets.OPENMRS_DB_USERNAME=$OPENMRS_DB_USERNAME \
           --set bahmni-mart.secrets.OPENMRS_DB_PASSWORD=$OPENMRS_DB_PASSWORD \
