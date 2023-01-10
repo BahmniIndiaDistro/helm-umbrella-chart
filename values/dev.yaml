@@ -71,7 +71,7 @@ postgresql:
     nodeSelector:
       eks.amazonaws.com/nodegroup: nonprod
   image:
-    tag: 14-debian-11
+    tag: 15-debian-11
 
 rabbitmq:
   enabled: true
