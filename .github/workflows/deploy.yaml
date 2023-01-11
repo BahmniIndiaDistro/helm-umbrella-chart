@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+
   repository_dispatch:
     types: ["bahmni-helm-publish-event","bahmniindia-helm-publish-event"]
   workflow_dispatch:
@@ -53,10 +54,12 @@ jobs:
         run: aws eks update-kubeconfig --name $CLUSTER_NAME
       - name: Install Nginx Ingress
         run: |
-          wget https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.5.1/deploy/static/provider/aws/nlb-with-tls-termination/deploy.yaml
-          sed  -i.bak "s|XXX.XXX.XXX/XX|10.0.0.0/16|" deploy.yaml
-          sed  -i.bak "s|arn:aws:acm:us-west-2:XXXXXXXX:certificate/XXXXXX-XXXXXXX-XXXXXXX-XXXXXXXX|${{ secrets.MYBAHMNI_CERT_ARN }}|" deploy.yaml
-          kubectl apply -f deploy.yaml
+          helm upgrade ingress-nginx ingress-nginx \
+          --repo https://kubernetes.github.io/ingress-nginx \
+          --namespace=ingress-nginx --create-namespace \
+          --install \
+          --set 'controller.service.annotations.service\.beta\.kubernetes\.io\/aws-load-balancer-ssl-cert'=${{ secrets.MYBAHMNI_CERT_ARN }} \
+          --values=values/ingress_config.yaml 
       - name: Upsert Route53 A record with INGRESS_DNS
         run: |
           INGRESS_DNS=$(kubectl -n ingress-nginx  get svc ingress-nginx-controller -o jsonpath="{.status.loadBalancer.ingress[0].hostname}")
@@ -96,6 +99,10 @@ jobs:
         run: helm dependency update
       - name: List Helm Dependencies
         run: ls charts
+      - name: Use profiling tagged image for performance env
+        if: ${{ github.event.inputs.environment == 'performance' }}
+        run: |
+          ./.github/profiling.sh
       - name: Helm Upgrade
         run: |
           helm upgrade bahmni-${{ env.ENVIRONMENT }} . \
@@ -151,6 +158,22 @@ jobs:
           --set crater-atomfeed.secrets.CRATER_PASSWORD=$CRATER_ADMIN_PASSWORD \
           --set crater-atomfeed.secrets.CRATER_ATOMFEED_DB_USERNAME=$CRATER_ATOMFEED_DB_USERNAME \
           --set crater-atomfeed.secrets.CRATER_ATOMFEED_DB_PASSWORD=$CRATER_ATOMFEED_DB_PASSWORD \
+          --set bahmni-metabase.config.OPENMRS_DB_NAME=openmrs_${{ env.ENVIRONMENT }} \
+          --set bahmni-metabase.secrets.MB_ADMIN_EMAIL=$MB_ADMIN_EMAIL \
+          --set bahmni-metabase.secrets.MB_ADMIN_PASSWORD=$MB_ADMIN_PASSWORD \
+          --set bahmni-metabase.secrets.OPENMRS_DB_HOST=$RDS_HOST \
+          --set bahmni-metabase.secrets.OPENMRS_DB_USERNAME=$OPENMRS_DB_USERNAME \
+          --set bahmni-metabase.secrets.OPENMRS_DB_PASSWORD=$OPENMRS_DB_PASSWORD \
+          --set bahmni-metabase.secrets.MB_DB_USER=$MB_DB_USER \
+          --set bahmni-metabase.secrets.MB_DB_PASS=$MB_DB_PASS \
+          --set bahmni-metabase.secrets.MART_DB_USERNAME=$MART_DB_USERNAME \
+          --set bahmni-metabase.secrets.MART_DB_PASSWORD=$MART_DB_PASSWORD \
+          --set bahmni-mart.secrets.OPENMRS_DB_HOST=$RDS_HOST \
+          --set bahmni-mart.secrets.OPENMRS_DB_USERNAME=$OPENMRS_DB_USERNAME \
+          --set bahmni-mart.secrets.OPENMRS_DB_PASSWORD=$OPENMRS_DB_PASSWORD \
+          --set bahmni-mart.secrets.MART_DB_USERNAME=$MART_DB_USERNAME \
+          --set bahmni-mart.secrets.MART_DB_PASSWORD=$MART_DB_PASSWORD \
+          --set bahmni-mart.config.OPENMRS_DB_NAME=openmrs_${{ env.ENVIRONMENT }} \
           --values=values/${{ env.ENVIRONMENT }}.yaml \
           --install \
           --namespace ${{ env.ENVIRONMENT }} --create-namespace
