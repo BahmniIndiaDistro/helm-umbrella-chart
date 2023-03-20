@@ -20,6 +20,7 @@ openmrs:
   config:
     OMRS_JAVA_SERVER_OPTS: '-agentpath:/etc/profiling/YourKit-JavaProfiler-2022.9/bin/linux-x86-64/libyjpagent.so=port=10001,listen=all -javaagent:/etc/jvm_metrics/jmx_prometheus_javaagent.jar=8280:/etc/jvm_metrics/config.yml'
     OMRS_JAVA_MEMORY_OPTS: '-XX:NewSize=1536m'
+    OMRS_MODULE_WEB_ADMIN: true
 bahmni-web:
   enabled: true
   metadata:
