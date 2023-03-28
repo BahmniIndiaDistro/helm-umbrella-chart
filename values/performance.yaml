@@ -18,7 +18,7 @@ openmrs:
   image:
     tag: profiling
   config:
-    OMRS_JAVA_SERVER_OPTS: '-Dfile.encoding=UTF-8 -server -Xms1024m -Xmx2560m -XX:MaxMetaspaceSize=512m -XX:+UseG1GC -XX:MaxGCPauseMillis=200 -XX:+UseGCOverheadLimit -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=./java.hprof -XX:+UseStringDeduplication -XX:+PrintGC -XX:+PrintGCDateStamps -XX:+PrintGCDetails -XX:+PrintGCTimeStamps -XX:InitiatingHeapOccupancyPercent=0 -agentpath:/etc/profiling/YourKit-JavaProfiler-2022.9/bin/linux-x86-64/libyjpagent.so=port=10001,listen=all -javaagent:/etc/jvm_metrics/jmx_prometheus_javaagent.jar=8280:/etc/jvm_metrics/config.yml'
+    OMRS_JAVA_SERVER_OPTS: '-Dfile.encoding=UTF-8 -server -Xms1024m -Xmx4096m -XX:+UnlockExperimentalVMOptions -XX:+UseG1GC -XX:G1NewSizePercent=25 -XX:G1MaxNewSizePercent=50 -XX:MaxGCPauseMillis=200 -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=./java.hprof -Xloggc:/usr/local/tomcat/logs/gc.log -XX:+UseStringDeduplication -XX:+PrintGC -XX:+PrintGCDateStamps -XX:+PrintGCDetails -XX:+PrintGCTimeStamps -agentpath:/etc/profiling/YourKit-JavaProfiler-2022.9/bin/linux-x86-64/libyjpagent.so=port=10001,listen=all -javaagent:/etc/jvm_metrics/jmx_prometheus_javaagent.jar=8280:/etc/jvm_metrics/config.yml'
     OMRS_JAVA_MEMORY_OPTS: ''
     OMRS_MODULE_WEB_ADMIN: true
 bahmni-web:
