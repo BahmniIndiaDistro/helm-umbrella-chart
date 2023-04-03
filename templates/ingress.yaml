@@ -13,7 +13,7 @@ metadata:
       add_header Cross-Origin-Resource-Policy "same-origin";
       add_header Permissions-Policy "accelerometer=(),ambient-light-sensor=(),autoplay=(),battery=(),camera=(),display-capture=(),document-domain=(),encrypted-media=(),fullscreen=(),gamepad=(),geolocation=(),gyroscope=(),layout-animations=(self),legacy-image-formats=(self),magnetometer=(),microphone=(),midi=(),oversized-images=(self),payment=(),picture-in-picture=(),publickey-credentials-get=(),speaker-selection=(),sync-xhr=(self),unoptimized-images=(self),unsized-media=(self),usb=(),screen-wake-lock=(),web-share=(),xr-spatial-tracking=()";
       add_header Pragma "no-cache";
-      add_header Referrer-Policy "no-referrer";
+      add_header Referrer-Policy "same-origin";
       add_header Strict-Transport-Security "max-age=31536000 ; includeSubDomains";
       add_header X-Content-Type-Options "nosniff";
       add_header X-Frame-Options "deny";
