@@ -49,7 +49,7 @@ prometheus:
     storageSpec:
       volumeClaimTemplate:
         spec:
-          storageClassName: gp2
+          storageClassName: bahmni-efs-sc
           accessModes:
             - ReadWriteOnce
           resources:
