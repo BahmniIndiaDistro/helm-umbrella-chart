@@ -12,6 +12,8 @@ metadata:
 
 openmrs:
   enabled: true
+  image:
+    tag: profiling
 bahmni-web:
   enabled: true
 bahmni-lab:
