@@ -12,22 +12,22 @@ dependencies:
 
   - repository: https://bahmni.github.io/helm-charts
     name: bahmni-web
-    version: ~1.0.0-0
+    version: ~1.1.0-0
     condition: bahmni-web.enabled
 
   - repository: https://bahmni.github.io/helm-charts
     name: bahmni-lab
-    version: ~1.0.0-0
+    version: ~1.1.0-0
     condition: bahmni-lab.enabled
 
   - repository: https://bahmni.github.io/helm-charts
     name: crater
-    version: ~1.0.0-0
+    version: ~1.1.0-0
     condition: crater.enabled
 
   - repository: https://bahmni.github.io/helm-charts
     name: reports
-    version: ~1.0.0-0
+    version: ~1.1.0-0
     condition: reports.enabled
 
   - repository: https://bahmniindiadistro.github.io/helm-charts
@@ -67,12 +67,12 @@ dependencies:
 
   - repository: https://bahmni.github.io/helm-charts
     name: patient-documents
-    version: ~1.0.0-0
+    version: ~1.1.0-0
     condition: patient-documents.enabled
 
   - repository: https://bahmni.github.io/helm-charts
     name: crater-atomfeed
-    version: ~1.0.0-0
+    version: ~1.1.0-0
     condition: crater-atomfeed.enabled
 
   - repository: https://bahmniindiadistro.github.io/helm-charts
@@ -82,12 +82,12 @@ dependencies:
 
   - repository: https://bahmni.github.io/helm-charts
     name: appointments
-    version: ~1.0.0-0
+    version: ~1.1.0-0
     condition: appointments.enabled
 
   - repository: https://bahmni.github.io/helm-charts
     name: implementer-interface
-    version: ~1.0.0-0
+    version: ~1.1.0-0
     condition: implementer-interface.enabled
 
   - repository: https://bahmniindiadistro.github.io/helm-charts
@@ -101,10 +101,10 @@ dependencies:
 
   - repository: https://bahmni.github.io/helm-charts
     name: bahmni-metabase
-    version: ~1.0.0-0
+    version: ~1.1.0-0
     condition: bahmni-metabase.enabled
     
   - repository: https://bahmni.github.io/helm-charts
     name: bahmni-mart
-    version: ~1.0.0-0
+    version: ~1.1.0-0
     condition: bahmni-mart.enabled
