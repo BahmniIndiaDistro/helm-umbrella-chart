@@ -26,7 +26,7 @@ on:
           - performance
 env:
   ENVIRONMENT: ${{ github.event.inputs.environment || 'dev'}}
-  ENVIRONMENT_DNS: ${{ (github.event.inputs.environment || 'dev') == 'demo' && 'lite.mybahmni.in' || format('{0}.{1}', github.event.inputs.environment || 'dev', 'lite.mybahmni.in') }}
+  ENVIRONMENT_DNS: ${{ (github.event.inputs.environment || 'dev') == 'demo' && 'abdm.lite.mybahmni.in' || format('{0}-abdm.{1}', github.event.inputs.environment || 'dev', 'lite.mybahmni.in') }}
 
 jobs:
   deploy:
@@ -34,7 +34,7 @@ jobs:
     concurrency: ${{ github.event.inputs.environment || 'dev'}}
     environment:
       name: ${{ github.event.inputs.environment || 'dev'}}
-      url: ${{ (github.event.inputs.environment || 'dev') == 'demo' && 'lite.mybahmni.in' || format('{0}.{1}', github.event.inputs.environment || 'dev', 'lite.mybahmni.in') }}
+      url: ${{ (github.event.inputs.environment || 'dev') == 'demo' && 'abdm.lite.mybahmni.in' || format('{0}-abdm.{1}', github.event.inputs.environment || 'dev', 'lite.mybahmni.in') }}
     runs-on: ubuntu-latest
     env:
       CLUSTER_NAME: bahmni-cluster-nonprod
