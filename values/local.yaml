@@ -38,6 +38,7 @@ crater:
     COMPANY_NAME: Bahmni
     COMPANY_SLUG: bahmni
     COUNTRY_ID: 101
+    CRATER_DEFAULT_CURRENCY: INR
   secrets:
     DB_USERNAME: "crater-user"
     DB_PASSWORD: "password"
