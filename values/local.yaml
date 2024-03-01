@@ -20,6 +20,7 @@ openmrs:
     OMRS_DB_NAME: openmrs
     DEBUG: true
     OMRS_CREATE_TABLES: true
+    LUCENE_MATCH_TYPE: "START"
 bahmni-web:
   enabled: true
 bahmni-lab:

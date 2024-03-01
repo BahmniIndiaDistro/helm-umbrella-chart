@@ -22,6 +22,7 @@ openmrs:
     OMRS_JAVA_SERVER_OPTS: '-Dfile.encoding=UTF-8 -server -Xms1024m -Xmx4096m -XX:+UnlockExperimentalVMOptions -XX:+UseG1GC -XX:G1NewSizePercent=25 -XX:G1MaxNewSizePercent=50 -XX:SurvivorRatio=8 -XX:MaxMetaspaceSize=512m -XX:ReservedCodeCacheSize=256m -XX:CompressedClassSpaceSize=256m -XX:MaxGCPauseMillis=200 -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=./java.hprof -Xloggc:/usr/local/tomcat/logs/gc.log -XX:+UseStringDeduplication -XX:+PrintGC -XX:+PrintGCDateStamps -XX:+PrintGCDetails -XX:+PrintGCTimeStamps -agentpath:/etc/profiling/YourKit-JavaProfiler-2022.9/bin/linux-x86-64/libyjpagent.so=port=10001,listen=all -javaagent:/etc/jvm_metrics/jmx_prometheus_javaagent.jar=8280:/etc/jvm_metrics/config.yml'
     OMRS_JAVA_MEMORY_OPTS: ''
     OMRS_MODULE_WEB_ADMIN: true
+    LUCENE_MATCH_TYPE: "START"
 bahmni-web:
   enabled: true
   metadata:
