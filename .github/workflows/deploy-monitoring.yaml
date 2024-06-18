@@ -46,11 +46,13 @@ jobs:
           GRAFANA_ADMIN_PASSWORD=$(aws ssm get-parameter --with-decryption --name "/nonprod/grafana/ADMIN_PASSWORD" --query "Parameter.Value" --output text)
           GITHUB_OAUTH_CLIENT_ID=$(aws ssm get-parameter --with-decryption --name "/nonprod/grafana/oauth/github/bahmniindia/CLIENT_ID" --query "Parameter.Value" --output text)
           GITHUB_OAUTH_CLIENT_SECRET=$(aws ssm get-parameter --with-decryption --name "/nonprod/grafana/oauth/github/bahmniindia/CLIENT_SECRET" --query "Parameter.Value" --output text)
+          kubectl create secret generic kube-prometheus-stack-grafana \
+          --from-literal GF_ADMIN_PASSWORD="$GRAFANA_ADMIN_PASSWORD" \
+          --from-literal GF_AUTH_GOOGLE_CLIENT_ID="$GITHUB_OAUTH_CLIENT_ID" \
+          --from-literal GF_AUTH_GOOGLE_CLIENT_SECRET="$GITHUB_OAUTH_CLIENT_SECRET" \
+          --namespace monitoring
           helm upgrade monitoring  prometheus-community/kube-prometheus-stack -n monitoring --create-namespace \
           --values=values/monitoring.yaml \
-          --set grafana.adminPassword=$GRAFANA_ADMIN_PASSWORD \
-          --set 'grafana.grafana\.ini.auth\.github.client_id'=$GITHUB_OAUTH_CLIENT_ID \
-          --set 'grafana.grafana\.ini.auth\.github.client_secret'=$GITHUB_OAUTH_CLIENT_SECRET \
           --install
 
       - name: Helm Upgrade Logging Stack
