@@ -5,7 +5,7 @@ grafana:
     hosts:
       - monitoring-lite.mybahmni.in
   defaultDashboardsTimezone: browser
-  envFromSecret: kube-prometheus-stack-grafana
+  envFromSecret: kube-prometheus-stack-grafana-github-oauth
   grafana.ini:
     server:
       root_url: https://monitoring-lite.mybahmni.in
