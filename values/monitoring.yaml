@@ -6,7 +6,6 @@ grafana:
       - monitoring-lite.mybahmni.in
   defaultDashboardsTimezone: browser
   envFromSecret: kube-prometheus-stack-grafana
-  adminPassword: $__env{GF_ADMIN_PASSWORD}
   grafana.ini:
     server:
       root_url: https://monitoring-lite.mybahmni.in
