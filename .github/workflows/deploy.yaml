@@ -204,7 +204,7 @@ jobs:
       steps:
         - name: Create repository_dispatch
           env:
-            REPOSITORY_NAME: "bahmni-e2e-tests"
+            REPOSITORY_NAME: "bahmni-lite-e2e-tests"
             ORG_NAME: "Bahmni"
             EVENT_TYPE: "Smoke-Test-Dev-Lite"
             TEST_CONTEXT: "clinic & smoke"
