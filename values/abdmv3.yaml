@@ -59,6 +59,8 @@ hip:
     BAHMNI_ID: "Bahmni"
 otp-service:
   enabled: true
+  config:
+    CONNECTION_STRING: "Host=bahmni-abdmv3-postgresql;Port=5432;Username=postgres;Password=welcome;Database=otpservice;"
 hip-atomfeed:
   enabled: true
 
