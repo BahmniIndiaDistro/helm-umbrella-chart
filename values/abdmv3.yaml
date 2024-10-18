@@ -64,7 +64,7 @@ otp-service:
 hip-atomfeed:
   enabled: true
   config:
-    DATABASE_URL: "jdbc:postgresql://bahmni-qa-postgresql:5432/"
+    DATABASE_URL: "jdbc:postgresql://bahmni-abdmv3-postgresql:5432/"
 
 postgresql:
   enabled: true
