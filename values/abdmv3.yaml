@@ -54,6 +54,8 @@ hiu-ui:
     RABBITMQ_HOST: bahmni-abdmv3-rabbitmq
 hip:
   enabled: true
+  image:
+    tag: "v3"
   config:
     CONNECTION_STRING: "Host=bahmni-abdmv3-postgresql;Port=5432;Username=postgres;Password=welcome;Database=hipservice"
     RABBITMQ_HOST: "bahmni-abdmv3-rabbitmq"
@@ -114,6 +116,8 @@ implementer-interface:
 
 abha-verification:
   enabled: true
+  image:
+    tag: "v3"
 
 bahmni-metabase:
   enabled: false
