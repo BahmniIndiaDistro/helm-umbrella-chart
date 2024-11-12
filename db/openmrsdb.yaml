@@ -10,7 +10,7 @@ spec:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 4Gi
+      storage: 1Gi
 ---
 apiVersion: v1
 kind: PersistentVolume
@@ -21,7 +21,7 @@ spec:
   claimRef:
     name: openmrsdbdata-pvc
   capacity:
-    storage: 4Gi
+    storage: 1Gi
   accessModes:
     - ReadWriteOnce
   hostPath:
