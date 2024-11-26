@@ -6,7 +6,7 @@ global:
 
 metadata:
   labels:
-    environment: dev
+    environment: abdmv3
   ingress:
     PROXY_BODY_SIZE: "7m"
     ABDM_PROXY_BODY_SIZE: "30m"
@@ -19,9 +19,9 @@ openmrs:
 bahmni-web:
   enabled: true
 bahmni-lab:
-  enabled: true
+  enabled: false
 crater:
-  enabled: true
+  enabled: false
   config:
     AUTO_INSTALL: "true"
     ADMIN_NAME: Super Man
@@ -38,30 +38,36 @@ reports:
 hiu:
   enabled: true
   config:
-    POSTGRES_HOST: "bahmni-dev-postgresql"
-    RABBITMQ_HOST: "bahmni-dev-rabbitmq"
+    POSTGRES_HOST: "bahmni-abdmv3-postgresql"
+    RABBITMQ_HOST: "bahmni-abdmv3-rabbitmq"
     HIU_ID: "Bahmni"
     HIU_NAME: "Bahmni"
 
 hiu-db:
   enabled: true
   config:
-    JAVA_TOOL_OPTIONS: "-Djdbc.url=jdbc:postgresql://bahmni-dev-postgresql:5432/ -Djdbc.username=postgres -Djdbc.password=welcome -Djdbc.database=health_information_user"
+    JAVA_TOOL_OPTIONS: "-Djdbc.url=jdbc:postgresql://bahmni-abdmv3-postgresql:5432/ -Djdbc.username=postgres -Djdbc.password=welcome -Djdbc.database=health_information_user"
 hiu-ui:
   enabled: true
   config:
-    POSTGRES_HOST: bahmni-dev-postgresql
-    RABBITMQ_HOST: bahmni-dev-rabbitmq
+    POSTGRES_HOST: bahmni-abdmv3-postgresql
+    RABBITMQ_HOST: bahmni-abdmv3-rabbitmq
 hip:
   enabled: true
+  image:
+    tag: "v3"
   config:
-    CONNECTION_STRING: "Host=bahmni-dev-postgresql;Port=5432;Username=postgres;Password=welcome;Database=hipservice"
-    RABBITMQ_HOST: "bahmni-dev-rabbitmq"
+    CONNECTION_STRING: "Host=bahmni-abdmv3-postgresql;Port=5432;Username=postgres;Password=welcome;Database=hipservice"
+    RABBITMQ_HOST: "bahmni-abdmv3-rabbitmq"
     BAHMNI_ID: "Bahmni"
 otp-service:
   enabled: true
+  config:
+    CONNECTION_STRING: "Host=bahmni-abdmv3-postgresql;Port=5432;Username=postgres;Password=welcome;Database=otpservice;"
 hip-atomfeed:
   enabled: true
+  config:
+    DATABASE_URL: "jdbc:postgresql://bahmni-abdmv3-postgresql:5432/"
 
 postgresql:
   enabled: true
@@ -69,7 +75,7 @@ postgresql:
     enabled: true
   primary:
     persistence:
-      subPath: dev
+      subPath: abdmv3
       storageClass: bahmni-efs-sc
       accessModes:
         - ReadWriteMany
@@ -98,21 +104,23 @@ patient-documents:
     OPENMRS_HOST: "openmrs"
 
 crater-atomfeed:
-  enabled: true
+  enabled: false
   metadata:
     labels:
-      environment: dev
+      environment: abdmv3
 appointments:
   enabled: true
 
 implementer-interface:
-  enabled: true
+  enabled: false
 
 abha-verification:
   enabled: true
+  image:
+    tag: "v3"
 
 bahmni-metabase:
-  enabled: true
+  enabled: false
   config:
     MB_DB_TYPE: postgres
     MB_DB_DBNAME: 'metabase'
@@ -120,12 +128,12 @@ bahmni-metabase:
     MART_DB_NAME: martdb
   secrets:
     MB_ADMIN_FIRST_NAME: 'Admin'
-    MB_DB_HOST: 'bahmni-dev-postgresql'
-    MART_DB_HOST: 'bahmni-dev-postgresql'
+    MB_DB_HOST: 'bahmni-abdmv3-postgresql'
+    MART_DB_HOST: 'bahmni-abdmv3-postgresql'
 
 bahmni-mart:
-  enabled: true
+  enabled: false
   config:
     MART_DB_NAME: martdb
   secrets:
-    MART_DB_HOST: "bahmni-dev-postgresql"
+    MART_DB_HOST: "bahmni-abdmv3-postgresql"
