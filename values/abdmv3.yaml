@@ -60,6 +60,9 @@ hip:
     CONNECTION_STRING: "Host=bahmni-abdmv3-postgresql;Port=5432;Username=postgres;Password=welcome;Database=hipservice"
     RABBITMQ_HOST: "bahmni-abdmv3-rabbitmq"
     BAHMNI_ID: "Bahmni"
+    GATEWAY_URL: "https://dev.abdm.gov.in"
+    ABHA_NUMBER_URL: "https://abhasbx.abdm.gov.in/abha/api"
+    ABHA_ADDRESS_URL: "https://abhasbx.abdm.gov.in/abha/api/v3/phr/web"
 otp-service:
   enabled: true
   config:
