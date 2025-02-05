@@ -40,8 +40,8 @@ hiu:
   config:
     POSTGRES_HOST: "bahmni-abdmv3-postgresql"
     RABBITMQ_HOST: "bahmni-abdmv3-rabbitmq"
-    HIU_ID: "Bahmni"
-    HIU_NAME: "Bahmni"
+    HIU_ID: "bahmni_indiadistro_new"
+    HIU_NAME: "Bahmni IndiaDistro HIU"
 
 hiu-db:
   enabled: true
@@ -59,7 +59,7 @@ hip:
   config:
     CONNECTION_STRING: "Host=bahmni-abdmv3-postgresql;Port=5432;Username=postgres;Password=welcome;Database=hipservice"
     RABBITMQ_HOST: "bahmni-abdmv3-rabbitmq"
-    BAHMNI_ID: "Bahmni"
+    BAHMNI_ID: "bahmni_indiadistro_new"
     GATEWAY_URL: "https://dev.abdm.gov.in"
     ABHA_NUMBER_URL: "https://abhasbx.abdm.gov.in/abha/api"
     ABHA_ADDRESS_URL: "https://abhasbx.abdm.gov.in/abha/api/v3/phr/web"
