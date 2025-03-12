@@ -37,6 +37,8 @@ reports:
     OPENMRS_HOST: "openmrs"
 hiu:
   enabled: true
+  image:
+    tag: "v3"
   config:
     POSTGRES_HOST: "bahmni-abdmv3-postgresql"
     RABBITMQ_HOST: "bahmni-abdmv3-rabbitmq"
